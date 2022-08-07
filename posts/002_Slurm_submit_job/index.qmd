@@ -1,0 +1,121 @@
+---
+title: "Slurm集群作业调度常用命令"
+author: "vetDNA"
+date: "2022-08-07"
+categories: [Skill, Methods]
+tags: 
+  - Slurm
+  - Linux
+image: "image.jpg"
+---
+
+# 引言
+
+学院的高性能计算资源通过SLURM进行作业调度管理，为了方便快速上手，制作本教程。
+
+推荐使用MobaXTerm进行连接服务器，使用winscp进行文件上传和下载。 登录方式，打开MobaXTerm，输入下面命令和（首次）密码即可登录集群。
+
+`> ssh 用户名@集群IP地址`
+
+# 1.sinfo
+
+sinfo查看集群目前各节点资源的整体调用情况
+
+集群一共有三个分区（partatioins），分别为一个管理分区server和两个计算分区。server分区下辖一个mgt管理节点；hqueue分区下辖三个计算节点node01-03，每个节点各有28核；fqueue分区下辖一个节点fat01，有40核，此节点拥有大内存。
+
+# 2.squeue
+
+squeue查看目前在集群上正在运行或者正在排队的任务
+
+# 3.sbatch
+
+sbatch命令通过脚本向集群投任务，一般而言只需要修改调用的cpu核数（偶数）
+
+`# SBATCH –ntasks-per-node`
+
+***注意，调用的核数与运行速度不一定呈正比，简而言之，不是越多越好***
+
+`> sbatch run.sh`
+
+脚本的内容如下
+
+``` bash
+#!/bin/bash
+#SBATCH -D ./
+#SBATCH -e job.%j.err
+#SBATCH -o job.%j.out
+#SBATCH -J iq_tree #工作的名称，改不改无所谓
+#SBATCH -N 1
+#SBATCH --ntasks-per-node=8 #根据运行情况调整核数
+#SBATCH -p queue
+#SBATCH -t 240:00:00 #设置运行最长时间，必须设置。240h=10d
+#SBATCH --mail-type=END
+#SBATCH --mail-type=FAIL
+#SBATCH --mail-user= xxxx@mail.com #输入个人邮箱，以便接受邮件提醒
+#SBATCH --array=1-8 #若非批量运行多个任务，请删除此处
+
+echo "Date = $(date)"
+echo "Hostname = $(hostname -s)"
+echo "Working Directory = $(pwd)"
+echo ""
+echo "Number of Nodes Allocated = $SLURM_JOB_NUM_NODES"
+echo "Number of Tasks Allocated = $SLURM_NTASKS"
+echo "Number of Cores/Task Allocated = $SLURM_CPUS_PER_TASK"
+echo This is task $SLURM_ARRAY_TASK_ID
+echo "SLURM_JOBID="$SLURM_JOBID
+echo "SLURM_JOB_NODELIST"=$SLURM_JOB_NODELIST
+echo "SLURM_NNODES"=$SLURM_NNODES
+echo "SLURMTMPDIR="$SLURMTMPDIR
+echo "working directory = "$SLURM_SUBMIT_DIR
+
+module purge
+module load gcc/9.2.0 iq-tree/1.6.12 openmpi/3.1.5
+
+####1.赖人命令行, MF代表自动找嘴角模型和参数，AUTO代表让程序自动调用CPU核数
+iqtree -s *.fas -m MF -nt AUTO
+
+####2.运行单个序列
+# iqtree -s H9N2_*.fas -m GTR+I+G -b 1000 -nt AUTO 
+
+#####3.批量运行多个任务
+#首先需要序列进行重命名，例如H9N2_1.fas;H9N2_2.fas;...依次类推。
+iqtree -s H9N2_"${SLURM_ARRAY_TASK_ID}".fas -m GTR+I+G -b 1000 -nt AUTO
+```
+
+注意此脚本必须为unix格式，若在windows新建和改写完后，需要将格式转换。 使用notepad++编辑次文本，保存为run.sh
+
+# 4.scontrol
+
+使用scontrol查看job情况
+
+`> scontrol show <job id>`
+
+会返回这个job的所有状态。
+
+# 5.scancel
+
+取消投递的任务
+
+`> scancel jobID`
+
+# 6.module
+
+## 6.1 module av
+
+查看可用的软件包或者模块
+
+## 6.2 module load
+
+加载软件包，载入beast软件 通过 `> beast -h`来查看软件包
+
+## 6.3 module list
+
+查看已加载包
+
+## 6.4 module purge
+
+清除加载的软件包
+
+# 7.htop查看
+
+使用ssh命令切换到计算节点(hquene或fquene)，载入htop模块,运行htop查看此节点CPU，内存等占用信息。

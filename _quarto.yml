@@ -2,18 +2,24 @@ project:
   type: website
 
 website:
-  title: "vetDNA"
+  title: "vetDNA's blog"
+  site-url: https://vetdna.netlify.app
+  description: "记录点点滴滴"
+  margin-header: subscribe.html
   navbar:
     right:
       - about.qmd
       - icon: github
-        href: https://github.com/
-      - icon: twitter
-        href: https://twitter.com
+        href: https://github.com/virologist
+      # - icon: twitter
+      #   href: https://twitter.com
+      - icon: rss
+        href: index.xml 
 format:
   html:
-    theme: cosmo
+    theme: minty
     css: styles.css
-
+comments:
+  giscus:
+    repo: virologist/vetDNA
 editor: visual
-

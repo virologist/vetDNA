@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://vetdna.netlify.app/about.html</loc>
+    <lastmod>2022-08-07T10:03:36.816Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vetdna.netlify.app/index.html</loc>
+    <lastmod>2022-08-07T10:39:09.538Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vetdna.netlify.app/posts/001_email_skills/index.html</loc>
+    <lastmod>2022-08-07T10:39:23.683Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vetdna.netlify.app/posts/welcome/index.html</loc>
+    <lastmod>2022-08-07T09:47:21.688Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vetdna.netlify.app/posts/002_Slurm_submit_job/index.html</loc>
+    <lastmod>2022-08-07T10:36:42.111Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vetdna.netlify.app/posts/003_HA_numbering/index.html</loc>
+    <lastmod>2022-08-07T10:39:04.074Z</lastmod>
+  </url>
+</urlset>

@@ -1,0 +1,30 @@
+---
+title: "HA numbering计数简明教程"
+author: "vetDNA"
+date: "2022-08-07"
+categories: [Skill, Methods]
+tags: 
+  - HA
+  - influenza
+image: "image.jpg"
+---
+
+# H3计数
+
+打开网站 [HA Subtype Numbering Conversion (beta)](https://www.fludb.org/brc/haNumbering.spg)
+
+![](1.png)
+
+输入数据格式：氨基酸的fasta/fas格式，如下
+
+> \>aa_seq QIKDLLVSSSTDLDTTLVLVNAIYFKGMWKTAFNAEDTREMPFHVTKQESKPVQMMCMNNSFNVATLPAEKMKILELPFASGDLSMLVLLPDEVSDLERIEKTINFEKLTEWTNPNTMEKRRVKVYLPQMKIEEKYNLTSVLMALGMTDLFIPSANLTGISSAESLKISQAVHGAFMELSEDGIEMAGSTGVIEDIKHSPESEQFRADHPFLFLIKHNPTNTIVYFGRYWSP
+
+![](2.png)
+
+将氨基酸序列上传，并选择H3计数 ![](3.png)
+
+下一步 ![](4.png)
+
+下载结果或者在线查看结果 ![](5.png)
+
+查看某个H3计数位点的氨基酸 ![](6.png)
