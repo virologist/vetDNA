@@ -250,6 +250,46 @@
   <media:content url="https://vetdna.netlify.app/posts/003_HA_numbering/image.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
+  <title>高通量虚拟筛选互做蛋白-AlphaPulldown</title>
+  <dc:creator>vetDNA</dc:creator>
+  <link>https://vetdna.netlify.app/posts/004_pull_down_in_silicon/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p><a href="https://www.embl-hamburg.de/AlphaPulldown/">AlphaPulldown</a>是一个Python软件包，它简化了蛋白质-蛋白质相互作用的筛选和使用AlphaFold-Multimer的高阶寡聚体的高通量建模。</p>
+<ul>
+<li>提供了一个方便的命令行界面，可以针对许多候选蛋白进行筛选，计算所有与所有的配对比较，测试替代的同源多聚体状态，并为更大的复合物的各个部分建模。</li>
+<li>将CPU阶段（MSA和模板特征生成）与GPU阶段（实际建模）分开。</li>
+<li>允许在不重新计算MSA的情况下对蛋白质的片段进行建模，并在模型中保持原有的全长残基编号</li>
+<li>在CSV表格中总结结果，包括AlphaFold得分、pDockQ和mpDockQ、PI得分以及界面的各种物理参数。</li>
+<li>提供一个Jupyter笔记本，用于对PAE图和模型进行互动分析</li>
+</ul>
+<section id="code" class="level3">
+<h3 class="anchored" data-anchor-id="code"><strong>Code</strong></h3>
+<ul>
+<li><a href="https://github.com/KosinskiLab/AlphaPulldown">AlphaPulldown source code and installation instructions</a></li>
+</ul>
+</section>
+<section id="tutorials" class="level3">
+<h3 class="anchored" data-anchor-id="tutorials"><strong>Tutorials</strong></h3>
+<ul>
+<li><p><a href="https://github.com/KosinskiLab/AlphaPulldown/blob/main/example_1.md">Example 1</a></p></li>
+<li><p><a href="https://github.com/KosinskiLab/AlphaPulldown/blob/main/example_2.md">Example 2</a></p></li>
+</ul>
+
+
+</section>
+
+ ]]></description>
+  <category>Skill</category>
+  <category>Methods</category>
+  <guid>https://vetdna.netlify.app/posts/004_pull_down_in_silicon/index.html</guid>
+  <pubDate>Sat, 06 Aug 2022 16:00:00 GMT</pubDate>
+  <media:content url="https://vetdna.netlify.app/posts/004_pull_down_in_silicon/image.jpg" medium="image" type="image/jpeg"/>
+</item>
+<item>
   <title>Quarto搭建个人博客</title>
   <dc:creator>vetRNA</dc:creator>
   <link>https://vetdna.netlify.app/posts/welcome/index.html</link>
