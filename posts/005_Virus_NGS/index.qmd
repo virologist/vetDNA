@@ -1,0 +1,72 @@
+---
+title: "用于病毒组装、群体遗传学和系统动力学的 HAplotype和PHylodynamics管道"
+author: "vetDNA"
+date: "`r format(Sys.time()"
+categories: [Skill, Methods]
+tags: 
+  - virus phylogentic
+  - viral assembly
+  - population genetics
+  - phylodynamics
+image: "image.png"
+---
+
+### **Citing HAPHPIPE**
+
+When using HAPHPIPE, please cite our article when it is available. For now, reference the GitHub website: https://github.com/gwcbi/haphpipe and the validation [paper](https://doi.org/10.3390/v12070758).
+
+![](haphpipe_schematic_v2.png)
+
+### **The HAPHPIPE suite**
+
+Each stage can be run on its own. Stages are grouped into 4 categories: `hp_reads`, `hp_assemble`, `hp_haplotype`, and `hp_annotate`. More detailed description of command line options for each stage are available in the below sections. To view all available stages in HAPHPIPE, run:
+
+    haphpipe -h
+
+Output will look like:
+
+    Program: haphpipe (haplotype and phylodynamics pipeline)
+    Version: 1.0.2
+
+    Commands:
+     -- Reads
+        sample_reads             subsample reads using seqtk
+        trim_reads               trim reads using Trimmomatic
+        join_reads               join reads using FLASh
+        ec_reads                 error correct reads using SPAdes
+
+     -- Assemble
+        assemble_denovo          assemble reads denovo
+        assemble_amplicons       assemble contigs to amplicon regions
+        assemble_scaffold        assemble contigs to genome
+        align_reads              align reads to reference
+        call_variants            call variants
+        vcf_to_consensus         create consensus sequence from VCF
+        refine_assembly          iterative refinement: align - variants - consensus
+        finalize_assembly        finalize consensus sequence
+
+     -- Haplotype
+        predict_haplo            assemble haplotypes with PredictHaplo
+        ph_parser                parse output from PredictHaplo
+        cliquesnv                assemble haplotypes with CliqueSNV
+
+     -- Description
+        pairwise_align           align consensus to an annotated reference
+        extract_pairwise         extract sequence regions from pairwise alignment
+        summary_stats            generates summary statistics for samples
+
+     -- Phylo
+        multiple_align           multiple sequence alignment
+        model_test               tests for model of evolution using ModelTest
+        build_tree_NG            builds phylogenetic tree with RAxML-NG
+
+     -- Miscellaneous
+        demo                     setup demo directory and test data
+
+HAPHPIPE consists of a suite of sub-commands under each stage that are invoked as follows:
+
+`haphpipe [stage] [sub-command] [options]`
+
+For example, to join paired end reads, one would invoke the following:
+
+`haphpipe join_reads --fq1 trimmed_1.fastq --fq2 trimmed_2.fastq`
