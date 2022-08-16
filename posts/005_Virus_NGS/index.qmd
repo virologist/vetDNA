@@ -1,7 +1,7 @@
 ---
 title: "用于病毒组装、群体遗传学和系统动力学的 HAplotype和PHylodynamics管道"
 author: "vetDNA"
-date: "`r format(Sys.time()"
+date: "2022-08-15"
 categories: [Skill, Methods]
 tags: 
   - virus phylogentic
@@ -11,13 +11,15 @@ tags:
 image: "image.png"
 ---
 
-### **Citing HAPHPIPE**
+# **Citing HAPHPIPE**
 
 When using HAPHPIPE, please cite our article when it is available. For now, reference the GitHub website: https://github.com/gwcbi/haphpipe and the validation [paper](https://doi.org/10.3390/v12070758).
 
+Quality trimming, error correction, de novo assembly, alignment and haplotype reconstruction are all components of the HAPHPIPE protocol.
+
 ![](haphpipe_schematic_v2.png)
 
-### **The HAPHPIPE suite**
+# **The HAPHPIPE suite**
 
 Each stage can be run on its own. Stages are grouped into 4 categories: `hp_reads`, `hp_assemble`, `hp_haplotype`, and `hp_annotate`. More detailed description of command line options for each stage are available in the below sections. To view all available stages in HAPHPIPE, run:
 
